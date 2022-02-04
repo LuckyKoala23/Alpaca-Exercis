@@ -1,0 +1,21 @@
+name: deploy our website
+
+  on:
+    workflow_dispach
+  
+  jobs:
+    deploy-job:
+      runs-on: ubuntu-latest
+      steps:
+      - uses: actions/checkout@v2
+      - name: Check AWS CLI
+        run:
+      - name: Run Deployment
+        env:
+          AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
+        run:
+          echo Hey I startet a deployment
+          mkdir ~/.aws
+          echo "[default]" >> ~/.aws/credentials
